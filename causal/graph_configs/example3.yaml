@@ -1,0 +1,30 @@
+dag_generation_method: "CustomDAG"
+edge_list:
+    - ["root", "G"]
+    - ["G", "D"]
+node_list:
+    - name: "G"
+      corruption_func: "gamma"
+      parameter: "gamma"
+      type: "ConstantNode"
+      render_value: 2.4
+      severity_value: 0.8
+
+    - name: "D"
+      corruption_func: "defocus"
+      parameter: "f_stop"
+      type: "WeightedSumNode"
+      defaults:
+        z: 10.0
+      min_val: 50
+      max_val: 150
+      extreme: 50
+      standard: 150
+      beta_a: 1
+      beta_b: 1
+      corruption_type: "decreasing"
+      bias: False
+      std: 0.5
+      activation_type: "tanh"
+      intervene:
+        severity_value: 0.8
