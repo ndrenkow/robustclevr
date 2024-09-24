@@ -64,8 +64,8 @@ class WrapperModel(object):
         for i, dag in enumerate(self.dags):
             dag.save(f'{directory}/dag_{i}.{ext}')
 
-    def sample(self, scene=None, idx=0): 
-        sampled = self.dags[idx].sample(scene=scene)
+    def sample(self, scene=None, idx=0, **kwargs): 
+        sampled = self.dags[idx].sample(scene=scene, **kwargs)
 
         return sampled
 
